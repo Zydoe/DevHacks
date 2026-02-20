@@ -10,6 +10,10 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
+[Uu]ser[Ss]ettings/
+.vscode/
+.idea/
+
 # Asset meta data should be tracked
 # but not the asset store tools
 [Aa]ssets/AssetStoreTools*
