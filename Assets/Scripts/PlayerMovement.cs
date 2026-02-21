@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public float sneakSpeed;
+    public bool isHiding = false;
+    public Animator animator;
+    public References references;
 
     public enum PlayerState
     {
@@ -25,17 +28,19 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         running,
-        sneaking
+        sneaking,
+        idle,
+        hiding
     }
-    MovementState movementState = MovementState.walking;
+    MovementState movementState = MovementState.idle;
     // Start is called before the first frame update
     void Start()
     {
-
+        references = GameObject.Find("References").GetComponent<References>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (playerState)
         {
@@ -56,11 +61,47 @@ public class PlayerMovement : MonoBehaviour
 
     void updateMovementState()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        if (WorldData.gamePaused) { return; }
+        float movement = new Vector2(h, v).magnitude;
+        animator.SetFloat("movement", movement);
+        if (h == 0 && v == 0)
+        {
+            movementState = MovementState.idle;
+            return;
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+            if(h > 0) //Right
+            {
+                animator.SetInteger("direction", 1);
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if(h < 0) //Left
+            {
+                animator.SetInteger("direction", 3);
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
+        if(v > 0) //Up
+        {
+            animator.SetInteger("direction", 0);
+        }
+        else if(v < 0) //Down
+        {
+            animator.SetInteger("direction", 2);
+        }
+        if (isHiding)
+        {
+            movementState = MovementState.hiding;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             movementState = MovementState.running;
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (!references.dayNightManager.isDay)
         {
             movementState = MovementState.sneaking;
         }
@@ -84,13 +125,18 @@ public class PlayerMovement : MonoBehaviour
             case MovementState.sneaking:
                 move(sneakSpeed);
                 break;
+            case MovementState.hiding:
+            break;
+            case MovementState.idle:
+                animator.SetBool("isIdle", true);
+                break;
         }
     }
 
     void move(float speed)
     {
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector2 movement = inputDirection.normalized * speed * Time.deltaTime;
+        Vector2 movement = inputDirection.normalized * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement);
     }
 
