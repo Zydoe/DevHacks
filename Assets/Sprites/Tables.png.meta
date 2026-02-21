@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 74420e930a83e5246bdf84b800859a49
+guid: 5dda083807982cc42bd9ee49013c941f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tables_0
+      name: Tables 1_0
       rect:
         serializedVersion: 2
         x: 309
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61301b590e8886344a7bcc12da53f7fc
-      internalID: -828938505
+      spriteID: faa48a66512c2d44db1dcd514817bff4
+      internalID: -95337885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_1
+      name: Tables 1_1
       rect:
         serializedVersion: 2
         x: 739
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cf9100e2c2684946aa6153a8ea59d44
-      internalID: -1659037028
+      spriteID: baafa74e4028f54458471c7bb92e3251
+      internalID: 232823481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_2
+      name: Tables 1_2
       rect:
         serializedVersion: 2
         x: 1129
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c638fdf122a969c488b2cffc3e546618
-      internalID: 550378261
+      spriteID: 04da637bc2b0a2f42b7b610f5c57a772
+      internalID: -2031573581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_3
+      name: Tables 1_3
       rect:
         serializedVersion: 2
         x: 1479
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad13f006338438449ce7d7ca9845921
-      internalID: 939697129
+      spriteID: c819e145393c996418e10ddf9570413a
+      internalID: -1488162557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_4
+      name: Tables 1_4
       rect:
         serializedVersion: 2
         x: 319
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9605764167cb64449abeedde53be020c
-      internalID: -1793899357
+      spriteID: 10dd2f990f12ef9469cd401881aad4c6
+      internalID: -833360741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_5
+      name: Tables 1_5
       rect:
         serializedVersion: 2
         x: 729
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d03c1bf4b33319428d660b35b954125
-      internalID: 2109582888
+      spriteID: 4f3828241aa0aab45bb874acf32cd310
+      internalID: -677085797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_6
+      name: Tables 1_6
       rect:
         serializedVersion: 2
         x: 1119
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47b446df3df64f447828a1fcea93cfec
-      internalID: 150098418
+      spriteID: 9b6e9a1dabad2d54696a63ebc5826194
+      internalID: -1140394787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tables_7
+      name: Tables 1_7
       rect:
         serializedVersion: 2
         x: 1560
@@ -258,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bf2c4462bbc2de4a806a12b3c3f29ff
-      internalID: -130417837
+      spriteID: 9c1a4a98611c75b49a24ec016c1ac001
+      internalID: 287382608
       vertices: []
       indices: 
       edges: []
@@ -275,14 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tables_0: -828938505
-      Tables_1: -1659037028
-      Tables_2: 550378261
-      Tables_3: 939697129
-      Tables_4: -1793899357
-      Tables_5: 2109582888
-      Tables_6: 150098418
-      Tables_7: -130417837
+      Tables 1_0: -95337885
+      Tables 1_1: 232823481
+      Tables 1_2: -2031573581
+      Tables 1_3: -1488162557
+      Tables 1_4: -833360741
+      Tables 1_5: -677085797
+      Tables 1_6: -1140394787
+      Tables 1_7: 287382608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
