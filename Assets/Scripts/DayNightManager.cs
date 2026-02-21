@@ -57,7 +57,7 @@ public class DayNightManager : MonoBehaviour
         OnNightStarted?.Invoke();
     }
 
-    void startDay()
+    public void startDay()
     {
         isDay = true;
         WorldData.currentDay++;

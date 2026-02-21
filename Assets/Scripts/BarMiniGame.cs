@@ -7,6 +7,9 @@ public class BarMiniGame : MonoBehaviour
 {
     public Transform needle;
     public Transform targetArea;
+    public AudioClip successSound;
+    public AudioClip failSound;
+    private AudioSource audioSource;
 
     [Header("Settings")]
     public float needleSpeed = 1f;
@@ -21,6 +24,10 @@ public class BarMiniGame : MonoBehaviour
         initialTargetScale = targetArea.localScale;
         targetArea.localPosition = new Vector3(targetArea.localPosition.x, targetArea.localPosition.y, -1f);
         needle.localPosition = new Vector3(needle.localPosition.x, needle.localPosition.y, -2f);
+    }
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -71,9 +78,14 @@ public class BarMiniGame : MonoBehaviour
 
         if (Mathf.Abs(needleX - targetX) <= halfTargetWidth)
         {
+            if (successSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(successSound);
+            }
             successCount++;
             if (successCount >= 3)
             {
+                References.Instance.player.addMoney(10000); // Add money reward for completing the mini-game
                 Debug.Log("Mini-game Completed!");
                 HideMiniGame();
             }
@@ -84,6 +96,10 @@ public class BarMiniGame : MonoBehaviour
         }
         else
         {
+            if (failSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(failSound);
+            }
             Debug.Log("Try Again!");
             ResetMiniGame();
         }

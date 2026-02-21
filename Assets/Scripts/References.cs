@@ -10,6 +10,7 @@ public class References : MonoBehaviour
     public MusicManager musicManager;
     public MenuManager menuManager;
     public ActivateMiniGame activateMiniGame;
+    public GameObject playerRespawnPoint;
     public static References Instance { get; private set; }
     void Awake()
     {
