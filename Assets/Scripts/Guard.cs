@@ -20,6 +20,10 @@ public class Guard : MonoBehaviour
         chasing,
         searching
     }
+    [Header("Guard Sounds")]
+    public AudioClip grunt;
+    public AudioClip discover; //Hey YOU!
+    public AudioClip suspicious;
     public GuardState currentState = GuardState.idle;
     // Start is called before the first frame update
     void OnEnable()

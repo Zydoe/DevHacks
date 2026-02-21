@@ -8,8 +8,9 @@ public class DayNightManager : MonoBehaviour
     public static event System.Action OnNightStarted;
     public static event System.Action OnDayStarted;
 
-    public GameObject light;
+    public GameObject lightObject;
     private Light2D globalLight;
+    public MusicManager musicManager;
     public float dayBrightness = 1f;
     public float nightBrightness = 0.05f;
     int timePerHour = 30;
@@ -19,7 +20,16 @@ public class DayNightManager : MonoBehaviour
 
     void Start()
     {
-        globalLight = light.GetComponent<Light2D>();
+        globalLight = lightObject.GetComponent<Light2D>();
+        musicManager = GetComponent<MusicManager>();
+        if(isDay)
+        {
+            startDay();
+        }
+        else
+        {
+            startNight();
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +53,7 @@ public class DayNightManager : MonoBehaviour
         isDay = false;
         StartCoroutine(nightTimer());
         globalLight.intensity = nightBrightness;
+        musicManager.PlayNightMusic();
         OnNightStarted?.Invoke();
     }
 
@@ -53,6 +64,7 @@ public class DayNightManager : MonoBehaviour
         globalLight.intensity = dayBrightness;
         currentTime = 0;
         StopAllCoroutines();
+        musicManager.PlayDayMusic();
         OnDayStarted?.Invoke();
     }
     IEnumerator nightTimer()
