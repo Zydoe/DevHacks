@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     public Inventory inventory = new Inventory();
     public float money;
+    public AudioClip pickupSound;
+    public GameObject audioSourceObject;
+    private AudioSource audioSource;
     public static Player Instance { get; private set; }
     void Awake()
     {
@@ -24,10 +27,22 @@ public class Player : MonoBehaviour
     {
 
     }
+    void Start()
+    {
+        if (audioSourceObject != null)
+        {
+            audioSource = audioSourceObject.GetComponent<AudioSource>();
+        }
+    }
 
     public void addMoney(float amount)
     {
         money += amount;
+        References.Instance.menuManager.UpdateMoneyDisplay(money);
+        if (pickupSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(pickupSound);
+        }
     }
     public void removeMoney(float amount)
     {
@@ -35,8 +50,7 @@ public class Player : MonoBehaviour
     }
     public void addItem(ItemData item)
     {
-        inventory.addItem(item);
-        Debug.Log("Added " + item.itemName + " to inventory");
+        addMoney(item.itemValue);
     }
     public void removeItem(ItemData item)
     {

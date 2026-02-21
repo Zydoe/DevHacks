@@ -9,9 +9,12 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI timeDisplay;
     public GameObject interactPromptObject;
     private InteractPrompt interactPrompt;
+    public GameObject moneyDisplayObject;
+    private TextMeshProUGUI moneyDisplay;
     void Start()
     {
         interactPrompt = interactPromptObject.GetComponent<InteractPrompt>();
+        moneyDisplay = moneyDisplayObject.GetComponent<TextMeshProUGUI>();
     }
     void Update()
     {
@@ -51,5 +54,10 @@ public class MenuManager : MonoBehaviour
     public void HideInteractPrompt()
     {
         interactPromptObject.SetActive(false);
+    }
+
+    public void UpdateMoneyDisplay(float money)
+    {
+        moneyDisplay.text = "$ " + money.ToString();
     }
 }
