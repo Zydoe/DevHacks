@@ -20,11 +20,13 @@ public class Guard : MonoBehaviour
         chasing,
         searching
     }
+    public GuardState currentState = GuardState.idle;
+
     [Header("Guard Sounds")]
     public AudioClip grunt;
     public AudioClip discover; //Hey YOU!
     public AudioClip suspicious;
-    public GuardState currentState = GuardState.idle;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -42,6 +44,7 @@ public class Guard : MonoBehaviour
     {
         vision = visionObject.GetComponent<GuardVision>();
         references = GameObject.Find("References").GetComponent<References>();
+        audioSource = GetComponent<AudioSource>();
         if (references.dayNightManager.isDay)
             handleOnDayStarted();
         else
@@ -55,7 +58,6 @@ public class Guard : MonoBehaviour
         switch (currentState)
         {
             case GuardState.idle:
-                //Idle
                 break;
             case GuardState.patrolling:
                 UpdatePatrolling();
@@ -89,6 +91,7 @@ public class Guard : MonoBehaviour
 
     void StartSearch()
     {
+        audioSource.PlayOneShot(suspicious);
         StopAllCoroutines();
         currentState = GuardState.searching;
         StartCoroutine(searchTimer());
@@ -107,7 +110,6 @@ public class Guard : MonoBehaviour
 
             if (hit.collider == null)
             {
-                Debug.Log("Player in sight");
                 return true;
             }
             else
@@ -120,6 +122,7 @@ public class Guard : MonoBehaviour
 
     void StartChase()
     {
+        audioSource.PlayOneShot(discover);
         StopAllCoroutines();
         currentState = GuardState.chasing;
         references.chaseManager.JoinChase(gameObject);
