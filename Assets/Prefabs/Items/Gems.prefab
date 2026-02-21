@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4344672281485328436}
   - component: {fileID: 5323381985417318831}
   - component: {fileID: 4899911779366072891}
+  - component: {fileID: 1401233329795692020}
   m_Layer: 0
   m_Name: Gems
   m_TagString: Item
@@ -4934,3 +4935,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1401233329795692020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359772231082347866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc2e1d77e9e8a549807ece649d83f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptText: Steal
+  buttonText: '[E]'
+  playerInRange: 0
