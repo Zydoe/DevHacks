@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip nightMusic;
     public GameObject musicPlayer;
     private AudioSource audioSource;
-    void Start()
+    void Awake()
     {
         audioSource = musicPlayer.GetComponent<AudioSource>();
     }
