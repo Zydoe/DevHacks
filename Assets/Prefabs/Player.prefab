@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8559763637530707415}
   - component: {fileID: 975064064294562804}
   - component: {fileID: 4835098236294008808}
-  - component: {fileID: 4267013434316391232}
-  - component: {fileID: 4337075282489339024}
+  - component: {fileID: 8346530922409296988}
+  - component: {fileID: 8478010615039583231}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -57,7 +57,7 @@ MonoBehaviour:
   runSpeed: 0.8
   sneakSpeed: 0.2
   isHiding: 0
-  animator: {fileID: 4267013434316391232}
+  animator: {fileID: 8346530922409296988}
   references: {fileID: 0}
   playerState: 0
 --- !u!114 &8840776089147935031
@@ -231,7 +231,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &4267013434316391232
+--- !u!95 &8346530922409296988
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &4337075282489339024
+--- !u!212 &8478010615039583231
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
