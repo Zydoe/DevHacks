@@ -8,6 +8,7 @@ public class References : MonoBehaviour
     public DayNightManager dayNightManager;
     public ChaseManager chaseManager;
     public MusicManager musicManager;
+    public MenuManager menuManager;
     public static References Instance { get; private set; }
     void Awake()
     {

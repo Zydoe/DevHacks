@@ -423,9 +423,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1011923956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -524, y: 318.83}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -524, y: -171.17001}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606752648
@@ -448,9 +448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Oh My
-
-    Money!'
+  m_text: Finders Keepers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b83bacfb281b7e48b275fe6a3405dd3, type: 2}
   m_sharedMaterial: {fileID: -7149412855222681890, guid: 9b83bacfb281b7e48b275fe6a3405dd3, type: 2}
@@ -1150,9 +1148,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1011923956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -525, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 209, y: -558}
   m_SizeDelta: {x: 500, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1963073037

@@ -67,10 +67,6 @@ public class PlayerMovement : MonoBehaviour
     void updateMovementState()
     {
         //Pausing
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            WorldData.gamePaused = !WorldData.gamePaused;
-        }
         if (WorldData.gamePaused) { return; }
 
 

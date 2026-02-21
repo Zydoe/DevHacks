@@ -13,8 +13,8 @@ public class DayNightManager : MonoBehaviour
     public MusicManager musicManager;
     public float dayBrightness = 1f;
     public float nightBrightness = 0.05f;
-    int timePerHour = 30;
-    int currentTime = 0;
+    int timePerHour = 5;
+    public int currentTime = 0;
     public bool isDay = true;
 
 
@@ -69,12 +69,12 @@ public class DayNightManager : MonoBehaviour
     }
     IEnumerator nightTimer()
     {
-        yield return new WaitForSeconds(timePerHour);
-        currentTime++;
-        if (currentTime >= 6)
+        while (currentTime < 6)
         {
-            startDay();
+            yield return new WaitForSeconds(timePerHour);
+            currentTime++;
         }
+        startDay();
     }
     public void restartNight()
     {

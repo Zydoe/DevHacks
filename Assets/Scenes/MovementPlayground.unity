@@ -307,7 +307,7 @@ MonoBehaviour:
   player: {fileID: 1283890034}
   dayNightManager: {fileID: 648618700}
   chaseManager: {fileID: 648618701}
-  musicManager: {fileID: 0}
+  musicManager: {fileID: 648618702}
 --- !u!4 &648618699
 Transform:
   m_ObjectHideFlags: 0
