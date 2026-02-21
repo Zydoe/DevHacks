@@ -53,9 +53,10 @@ MonoBehaviour:
   nextPatrolPoint: {fileID: 0}
   references: {fileID: 0}
   walkSpeed: 0.3
-  chaseSpeed: 1
+  chaseSpeed: 0.5
   visionObject: {fileID: 8517260575354076534}
   torch: {fileID: 508113976411844337}
+  searchDuration: 10
   currentState: 0
 --- !u!212 &1496300054338750626
 SpriteRenderer:
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124863bf3f5c4247a6a206e12e262c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   playerInSight: 0
 --- !u!58 &5562883567649063123
 CircleCollider2D:
@@ -251,7 +253,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.43
+  m_Radius: 1.12
 --- !u!1001 &369567881416886904
 PrefabInstance:
   m_ObjectHideFlags: 0

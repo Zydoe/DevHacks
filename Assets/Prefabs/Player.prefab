@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8559763637530707415}
-  walkSpeed: 4
-  runSpeed: 7
+  walkSpeed: 0.5
+  runSpeed: 0.8
   sneakSpeed: 2
   playerState: 0
 --- !u!50 &8559763637530707415
