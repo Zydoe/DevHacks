@@ -31,7 +31,7 @@ public class BarMiniGame : MonoBehaviour
     void Update()
     {
         if (!isPlaying) return;
-        
+
         MoveNeedle();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -111,6 +111,7 @@ public class BarMiniGame : MonoBehaviour
 
     public void HideMiniGame()
     {
+        References.Instance.menuManager.HideInteractPrompt();
         isPlaying = false;
         gameObject.SetActive(false);
     } // end of hideMiniGame

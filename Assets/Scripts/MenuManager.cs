@@ -7,6 +7,12 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject PauseMenu;
     public TextMeshProUGUI timeDisplay;
+    public GameObject interactPromptObject;
+    private InteractPrompt interactPrompt;
+    void Start()
+    {
+        interactPrompt = interactPromptObject.GetComponent<InteractPrompt>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -21,7 +27,7 @@ public class MenuManager : MonoBehaviour
             }
         }
         DayNightManager dayNightManager = GetComponent<DayNightManager>();
-        timeDisplay.text = dayNightManager.isDay ? "Day " + WorldData.currentDay : dayNightManager.currentTime==0? 12+ " AM":dayNightManager.currentTime+" AM";
+        timeDisplay.text = dayNightManager.isDay ? "Day " + WorldData.currentDay : dayNightManager.currentTime == 0 ? 12 + " AM" : dayNightManager.currentTime + " AM";
     }
 
     public void ResumeGame()
@@ -36,5 +42,14 @@ public class MenuManager : MonoBehaviour
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
         WorldData.gamePaused = true;
+    }
+    public void ShowInteractPrompt(string text, string button)
+    {
+        interactPromptObject.SetActive(true);
+        interactPrompt.SetPromptText(text, button);
+    }
+    public void HideInteractPrompt()
+    {
+        interactPromptObject.SetActive(false);
     }
 }
