@@ -95,6 +95,7 @@ public class Guard : MonoBehaviour
         LayerMask visionMask = LayerMask.GetMask("Default");
         if (vision.playerInSight)
         {
+            
             Vector2 dir = (player.transform.position - transform.position).normalized;
             float dist = Vector2.Distance(transform.position, player.transform.position);
 
@@ -102,6 +103,7 @@ public class Guard : MonoBehaviour
 
             if (hit.collider == null)
             {
+                Debug.Log("Player in sight");
                 return true;
             }
             else

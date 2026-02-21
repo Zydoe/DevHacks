@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed;
     public float sneakSpeed;
     public bool isHiding = false;
+    public Animator animator;
     public References references;
 
     public enum PlayerState
@@ -60,7 +61,38 @@ public class PlayerMovement : MonoBehaviour
 
     void updateMovementState()
     {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
         if (WorldData.gamePaused) { return; }
+        float movement = new Vector2(h, v).magnitude;
+        animator.SetFloat("movement", movement);
+        if (h == 0 && v == 0)
+        {
+            movementState = MovementState.idle;
+            return;
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+            if(h > 0) //Right
+            {
+                animator.SetInteger("direction", 1);
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if(h < 0) //Left
+            {
+                animator.SetInteger("direction", 3);
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
+        if(v > 0) //Up
+        {
+            animator.SetInteger("direction", 0);
+        }
+        else if(v < 0) //Down
+        {
+            animator.SetInteger("direction", 2);
+        }
         if (isHiding)
         {
             movementState = MovementState.hiding;
@@ -92,6 +124,11 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case MovementState.sneaking:
                 move(sneakSpeed);
+                break;
+            case MovementState.hiding:
+            break;
+            case MovementState.idle:
+                animator.SetBool("isIdle", true);
                 break;
         }
     }
