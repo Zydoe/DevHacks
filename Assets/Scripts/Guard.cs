@@ -46,6 +46,7 @@ public class Guard : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (WorldData.gamePaused) { return; }
         CheckForPlayer();
         switch (currentState)
         {
@@ -84,6 +85,8 @@ public class Guard : MonoBehaviour
 
     void StartSearch()
     {
+        StopAllCoroutines();
+        currentState = GuardState.searching;
         StartCoroutine(searchTimer());
     }
     bool canSeePlayer()
@@ -111,7 +114,9 @@ public class Guard : MonoBehaviour
 
     void StartChase()
     {
+        StopAllCoroutines();
         currentState = GuardState.chasing;
+        references.chaseManager.JoinChase(gameObject);
     }
 
     void UpdatePatrolling()
@@ -148,5 +153,6 @@ public class Guard : MonoBehaviour
     {
         yield return new WaitForSeconds(searchDuration);
         currentState = GuardState.patrolling;
+        references.chaseManager.LeaveChase(gameObject);
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.Rendering.Universal;
 
 public class DayNightManager : MonoBehaviour
 {
-    public static DayNightManager Instance { get; private set; }
-
     public static event System.Action OnNightStarted;
     public static event System.Action OnDayStarted;
 
@@ -17,16 +15,7 @@ public class DayNightManager : MonoBehaviour
     int timePerHour = 30;
     int currentTime = 0;
     public bool isDay = true;
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+
 
     void Start()
     {

@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public float sneakSpeed;
+    public bool isHiding = false;
+    public References references;
 
     public enum PlayerState
     {
@@ -26,13 +28,14 @@ public class PlayerMovement : MonoBehaviour
         walking,
         running,
         sneaking,
+        idle,
         hiding
     }
-    MovementState movementState = MovementState.walking;
+    MovementState movementState = MovementState.idle;
     // Start is called before the first frame update
     void Start()
     {
-
+        references = GameObject.Find("References").GetComponent<References>();
     }
 
     // Update is called once per frame
@@ -57,11 +60,16 @@ public class PlayerMovement : MonoBehaviour
 
     void updateMovementState()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (WorldData.gamePaused) { return; }
+        if (isHiding)
+        {
+            movementState = MovementState.hiding;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             movementState = MovementState.running;
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (!references.dayNightManager.isDay)
         {
             movementState = MovementState.sneaking;
         }

@@ -478,14 +478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1403941664842108747, guid: 9876d7651399f994c89e509276307c83, type: 3}
-      propertyPath: runSpeed
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403941664842108747, guid: 9876d7651399f994c89e509276307c83, type: 3}
-      propertyPath: walkSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4172229922432958005, guid: 9876d7651399f994c89e509276307c83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.82
@@ -540,17 +532,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1656143203887318254, guid: 38f8986469510254c857971959f4deaa, type: 3}
-      propertyPath: chaseSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656143203887318254, guid: 38f8986469510254c857971959f4deaa, type: 3}
       propertyPath: references
       value: 
       objectReference: {fileID: 648618698}
-    - target: {fileID: 1656143203887318254, guid: 38f8986469510254c857971959f4deaa, type: 3}
-      propertyPath: searchDuration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1656143203887318254, guid: 38f8986469510254c857971959f4deaa, type: 3}
       propertyPath: nextPatrolPoint
       value: 
@@ -598,10 +582,6 @@ PrefabInstance:
     - target: {fileID: 4206747379644787617, guid: 38f8986469510254c857971959f4deaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5562883567649063123, guid: 38f8986469510254c857971959f4deaa, type: 3}
-      propertyPath: m_Radius
-      value: 1.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

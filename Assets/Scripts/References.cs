@@ -6,6 +6,7 @@ public class References : MonoBehaviour
 {
     public Player player;
     public DayNightManager dayNightManager;
+    public ChaseManager chaseManager;
     public static References Instance { get; private set; }
     void Awake()
     {
