@@ -4,15 +4,12 @@ public class ActivateMiniGame : MonoBehaviour
 {
     public BarMiniGame miniGameScript;
 
-    void Update()
+    public void StartMiniGame()
     {
-        // for now, tab runs the game again but we can use something else to trigger it
-        if (Input.GetKeyDown(KeyCode.Tab))
+        References.Instance.menuManager.HideInteractPrompt();
+        if (miniGameScript != null)
         {
-            if (miniGameScript != null)
-            {
-                miniGameScript.showMiniGame();
-            }
-        } // end of if
+            miniGameScript.showMiniGame();
+        }
     }
 }

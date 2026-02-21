@@ -7,10 +7,15 @@ public class HidingPlace : MonoBehaviour
     public bool playerInRange = false;
     public References references;
 
+    void Start()
+    {
+        references = References.Instance;
+    }
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
+            References.Instance.menuManager.HideInteractPrompt();
             //Toggle hiding
             Player player = references.player;
             PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();

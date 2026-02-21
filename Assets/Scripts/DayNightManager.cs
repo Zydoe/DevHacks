@@ -13,7 +13,7 @@ public class DayNightManager : MonoBehaviour
     public MusicManager musicManager;
     public float dayBrightness = 1f;
     public float nightBrightness = 0.05f;
-    int timePerHour = 5;
+    int timePerHour = 30; //seconds per hour
     public int currentTime = 0;
     public bool isDay = true;
 
@@ -22,7 +22,7 @@ public class DayNightManager : MonoBehaviour
     {
         globalLight = lightObject.GetComponent<Light2D>();
         musicManager = GetComponent<MusicManager>();
-        if(isDay)
+        if (isDay)
         {
             startDay();
         }
