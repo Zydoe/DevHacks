@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc044c602a898640b8403056cfbc58b, type: 3}
   m_Name: Purse
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
-  itemName: 
+  sprite: {fileID: 21300000, guid: f0638a81f36b8fd49811ac4643bb0aa0, type: 3}
+  itemName: Purse
   itemSound: {fileID: 0}
-  itemValue: 0
+  itemValue: 200

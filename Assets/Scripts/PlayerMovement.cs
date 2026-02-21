@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         running,
-        sneaking
+        sneaking,
+        hiding
     }
     MovementState movementState = MovementState.walking;
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (playerState)
         {
@@ -90,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     void move(float speed)
     {
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector2 movement = inputDirection.normalized * speed * Time.deltaTime;
+        Vector2 movement = inputDirection.normalized * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement);
     }
 

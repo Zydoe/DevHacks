@@ -1,11 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 
 public class DayNightManager : MonoBehaviour
 {
     public static DayNightManager Instance { get; private set; }
+
+    public static event System.Action OnNightStarted;
+    public static event System.Action OnDayStarted;
 
     public GameObject light;
     private Light2D globalLight;
@@ -13,6 +16,7 @@ public class DayNightManager : MonoBehaviour
     public float nightBrightness = 0.05f;
     int timePerHour = 30;
     int currentTime = 0;
+    public bool isDay = true;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -20,7 +24,6 @@ public class DayNightManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -48,16 +51,20 @@ public class DayNightManager : MonoBehaviour
 
     public void startNight()
     {
+        isDay = false;
         StartCoroutine(nightTimer());
         globalLight.intensity = nightBrightness;
+        OnNightStarted?.Invoke();
     }
 
     void startDay()
     {
+        isDay = true;
         WorldData.currentDay++;
         globalLight.intensity = dayBrightness;
         currentTime = 0;
         StopAllCoroutines();
+        OnDayStarted?.Invoke();
     }
     IEnumerator nightTimer()
     {
