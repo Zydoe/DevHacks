@@ -21,12 +21,12 @@ public class Guard : MonoBehaviour
         searching
     }
     public GuardState currentState = GuardState.idle;
+
     [Header("Guard Sounds")]
     public AudioClip grunt;
     public AudioClip discover; //Hey YOU!
     public AudioClip suspicious;
     public AudioSource audioSource;
-
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -44,6 +44,7 @@ public class Guard : MonoBehaviour
     {
         vision = visionObject.GetComponent<GuardVision>();
         references = GameObject.Find("References").GetComponent<References>();
+        audioSource = GetComponent<AudioSource>();
         if (references.dayNightManager.isDay)
             handleOnDayStarted();
         else
@@ -57,7 +58,6 @@ public class Guard : MonoBehaviour
         switch (currentState)
         {
             case GuardState.idle:
-                //Idle
                 break;
             case GuardState.patrolling:
                 UpdatePatrolling();
