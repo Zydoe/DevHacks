@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isHiding = false;
     public Animator animator;
     public References references;
+    private bool movementKeyReleasedSinceHiding = false;
 
     public enum PlayerState
     {
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
         hiding
     }
     MovementState movementState = MovementState.idle;
+    [Header("Player Sounds")]
+    public AudioClip walkSound;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,18 +66,35 @@ public class PlayerMovement : MonoBehaviour
 
     void updateMovementState()
     {
+        //Pausing
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            WorldData.gamePaused = !WorldData.gamePaused;
+        }
+        if (WorldData.gamePaused) { return; }
+
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        if (WorldData.gamePaused) { return; }
+        
         float movement = new Vector2(h, v).magnitude;
         animator.SetFloat("movement", movement);
         if (h == 0 && v == 0)
         {
+            if(audioSource.clip == walkSound)
+            {
+                audioSource.Stop();
+            }
             movementState = MovementState.idle;
             return;
         }
         else
         {
+            audioSource.clip = walkSound;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             animator.SetBool("isIdle", false);
             if(h > 0) //Right
             {
@@ -126,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
                 move(sneakSpeed);
                 break;
             case MovementState.hiding:
+                UpdateHiding();
             break;
             case MovementState.idle:
                 animator.SetBool("isIdle", true);
@@ -133,6 +156,36 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void UpdateHiding()
+    {
+
+        bool movementKeyHeld = Input.GetKey(KeyCode.W) ||
+                           Input.GetKey(KeyCode.A) ||
+                           Input.GetKey(KeyCode.S) ||
+                           Input.GetKey(KeyCode.D);
+        if (!movementKeyHeld)
+        {
+            movementKeyReleasedSinceHiding = true;
+        }
+        if (movementKeyReleasedSinceHiding)
+        {
+            bool movementKeyDown = Input.GetKey(KeyCode.W) ||
+                           Input.GetKey(KeyCode.A) ||
+                           Input.GetKey(KeyCode.S) ||
+                           Input.GetKey(KeyCode.D);
+            if (movementKeyDown)
+            {
+                Unhide();
+            }
+        }
+    }
+    public void Unhide()
+    {
+        isHiding = false;
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        movementKeyReleasedSinceHiding = false;
+    }
     void move(float speed)
     {
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

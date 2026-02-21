@@ -13,6 +13,7 @@ public class Guard : MonoBehaviour
     public GameObject torch;
     private GuardVision vision;
     public int searchDuration;
+    public Animator animator;
     public enum GuardState
     {
         idle,
@@ -57,7 +58,7 @@ public class Guard : MonoBehaviour
         switch (currentState)
         {
             case GuardState.idle:
-                //Idle
+                animator.SetBool("isIdle", true);
                 break;
             case GuardState.patrolling:
                 UpdatePatrolling();
@@ -100,7 +101,7 @@ public class Guard : MonoBehaviour
     {
         GameObject player = references.player.gameObject;
         LayerMask visionMask = LayerMask.GetMask("Default");
-        if (vision.playerInSight)
+        if (vision.playerInSight && !player.GetComponent<PlayerMovement>().isHiding)
         {
             
             Vector2 dir = (player.transform.position - transform.position).normalized;
@@ -131,20 +132,42 @@ public class Guard : MonoBehaviour
     void UpdatePatrolling()
     {
         Vector2 target = nextPatrolPoint.transform.position;
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, walkSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
+        Move(target, walkSpeed);
     }
     void UpdateChasing()
     {
         Vector2 target = references.player.transform.position;
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, chaseSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
+        Move(target, chaseSpeed);
     }
     void UpdateSearching()
     {
         //Go to last known player position
         Vector2 target = vision.lastKnownPlayerPosition;
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, walkSpeed * Time.fixedDeltaTime);
+        Move(target, walkSpeed);
+    }
+    void Move(Vector2 target, float speed)
+    {
+        animator.SetBool("isIdle", false);
+        Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+        animator.SetFloat("movement", (newPos - rb.position).magnitude);
+        if(newPos.x > rb.position.x) //Right
+        {
+            animator.SetInteger("direction", 1);
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if(newPos.x < rb.position.x) //Left
+        {
+            animator.SetInteger("direction", 3);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+            if(newPos.y > rb.position.y) //Up
+            {
+                animator.SetInteger("direction", 0);
+            }
+            else if(newPos.y < rb.position.y) //Down
+            {
+                animator.SetInteger("direction", 2);
+            }
         rb.MovePosition(newPos);
     }
     void handleOnDayStarted()

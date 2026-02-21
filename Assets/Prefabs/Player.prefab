@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8559763637530707415}
   - component: {fileID: 975064064294562804}
   - component: {fileID: 4835098236294008808}
-  - component: {fileID: 8346530922409296988}
-  - component: {fileID: 8478010615039583231}
+  - component: {fileID: 3073376729705100130}
+  - component: {fileID: 7761810067342307485}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -57,9 +57,11 @@ MonoBehaviour:
   runSpeed: 0.8
   sneakSpeed: 0.2
   isHiding: 0
-  animator: {fileID: 8346530922409296988}
+  animator: {fileID: 3073376729705100130}
   references: {fileID: 0}
   playerState: 0
+  walkSound: {fileID: 8300000, guid: a523b17fadd0c174792e5fda665c8883, type: 3}
+  audioSource: {fileID: 4835098236294008808}
 --- !u!114 &8840776089147935031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +233,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &8346530922409296988
+--- !u!95 &3073376729705100130
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -252,7 +254,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &8478010615039583231
+--- !u!212 &7761810067342307485
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -19,16 +19,7 @@ public class References : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
+        Physics2D.queriesHitTriggers = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
